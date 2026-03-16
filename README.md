@@ -3,7 +3,7 @@
 A personal portfolio website built with **React**, **Vite**, and **Tailwind CSS**. Showcases my skills, projects, work experience, education, and contact info — fully responsive across desktop and mobile.
 
 <!-- INSERT: New portfolio screenshot here -->
-> ![Portfolio Preview](./src/assets/project.png)
+> ![Portfolio Preview](https://github.com/user-attachments/assets/39d3a3ff-ed8c-4555-a0a7-88fc7e1ba140)
 
 ---
 
