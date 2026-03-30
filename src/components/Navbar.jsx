@@ -43,7 +43,7 @@ const Navbar = () => {
           {/* desktop menu*/}
           <div className="mx-auto hidden max-w-2xl items-center justify-center rounded-xl py-3 backdrop-blur-xl lg:flex"
 style={{
-  boxShadow: "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(255,255,255,0.08), inset 1px 0 0 rgba(255,255,255,0.15), inset -1px 0 0 rgba(255,255,255,0.08)",
+  boxShadow: "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25), inset 0 -1px 0 rgba(255,255,255,0.13), inset 1px 0 0 rgba(255,255,255,0.15), inset -1px 0 0 rgba(255,255,255,0.08)",
   border: "1px solid transparent",
   backgroundClip: "padding-box",
 }}>

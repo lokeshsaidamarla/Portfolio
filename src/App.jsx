@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Bio from "./components/Bio";
 import ContactForm from "./components/ContactForm";
 import Education from "./components/Education";
@@ -9,74 +10,83 @@ import Skills from "./components/Skills";
 import ScrollToTop from "./components/totop";
 import Workexp from "./components/Workexp";
 import Certificates from "./components/Certificates";
-import Aurora from "./components/reactbit/Aurora";
-import Ribbons from "./components/reactbit/Ribbons";
-import { ThemeProvider, useTheme } from "./components/reactbit/ThemeContext";
+import ShapeGrid from "./components/reactbit/ShapeGrid";
 
-// Inner app reads the theme
-const AppInner = () => {
-  const { activeTheme } = useTheme();
-
-  return (
-    <div className="relative min-h-screen overflow-y-auto antialiased">
-
-      {/* Aurora Background — colors update with theme */}
-      <div className="fixed inset-0 -z-10">
-        <Aurora
-          colorStops={activeTheme.colors}
-          amplitude={1.0}
-          blend={0.5}
-          speed={1}
-        />
-      </div>
-
-      {/* Global Ribbon Cursor Effect */}
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          pointerEvents: "none",
-          zIndex: 9999,
-        }}
-      >
-        <Ribbons
-          colors={["#ffe627"]}
-          baseThickness={31}
-          speedMultiplier={0.5}
-          maxAge={500}
-          enableFade={false}
-          enableShaderEffect={false}
-          backgroundColor={[0, 0, 0, 0]}
-        />
-      </div>
-
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center p-4 space-y-8 container mx-auto">
-        <Hero />
-        <Navbar />
-        <Bio />
-        <Projects />
-        <Skills />
-        <Workexp />
-        <Certificates />
-        <Education />
-        <ContactForm />
-        <Footer />
-        <ScrollToTop />
-      </div>
-
-    </div>
+// Returns a different squareSize depending on screen width
+const useSquareSize = (mobileSize = 30, desktopSize = 55, breakpoint = 768) => {
+  const [squareSize, setSquareSize] = useState(
+    window.innerWidth < breakpoint ? mobileSize : desktopSize
   );
+  useEffect(() => {
+    const handler = () =>
+      setSquareSize(window.innerWidth < breakpoint ? mobileSize : desktopSize);
+    window.addEventListener("resize", handler);
+    return () => window.removeEventListener("resize", handler);
+  }, [mobileSize, desktopSize, breakpoint]);
+  return squareSize;
 };
 
 const App = () => {
+  const squareSize = useSquareSize(40, 55); // mobile=40, desktop=55
   return (
-    <ThemeProvider>
-      <AppInner />
-    </ThemeProvider>
+    <div
+      className="relative min-h-screen overflow-y-auto antialiased"
+      style={{ background: "#111111" }}
+    >
+
+      {/* ── ShapeGrid: fixed, full viewport, behind everything ── */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <ShapeGrid
+          speed={0.5}
+          squareSize={squareSize}
+          direction="diagonal"
+          borderColor="#f9f6f60e"
+          hoverFillColor="#222222"
+          shape="square"
+          hoverTrailAmount={3}
+        />
+      </div>
+
+      {/* Orange ambient glow — sits above grid */}
+      <div
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1,
+          pointerEvents: "none",
+          background: `radial-gradient(ellipse 70% 35% at 50% -5%, rgba(249,115,22,0.07) 0%, transparent 60%)`,
+        }}
+      />
+
+      {/* All page content — sits above grid + glow */}
+      <div style={{ position: "relative", zIndex: 2 }}>
+        <Navbar />
+
+        <div className="relative w-full">
+          <Hero />
+        </div>
+
+        <div className="relative flex flex-col items-center p-4 space-y-8 container mx-auto">
+          <Bio />
+          <Projects />
+          <Skills />
+          <Workexp />
+          <Certificates />
+          <Education />
+          <ContactForm />
+          <Footer />
+          <ScrollToTop />
+        </div>
+      </div>
+
+    </div>
   );
 };
 
