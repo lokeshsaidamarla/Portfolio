@@ -3,9 +3,9 @@
 A personal portfolio website built with **React**, **Vite**, and **Tailwind CSS**. Showcases my skills, projects, work experience, education, and contact info — fully responsive across desktop and mobile.
 
 <!-- INSERT: New portfolio screenshot here -->
-> ![Portfolio Preview](https://github.com/user-attachments/assets/39d3a3ff-ed8c-4555-a0a7-88fc7e1ba140)
+> ![Portfolio Preview](https://github.com/user-attachments/assets/90dfe461-41e6-4bfb-87a0-87c6a588dff4)
 
----
+
 
 ## 🔗 Live Demo
 
@@ -13,42 +13,55 @@ A personal portfolio website built with **React**, **Vite**, and **Tailwind CSS*
 
 ---
 
-## 🆕 What's New (Latest Update)
 
-This update brings a major visual and UX overhaul to the Hero section and overall design polish.
 
-### ✍️ Typing Greeting Animation
-The Hero greeting uses a **character-by-character typing animation** in Dancing Script cursive — giving the intro a handwritten, personal feel.
+## 🔄 UI Evolution — Then vs Now
 
-<!-- INSERT: GIF/screenshot of typing animation -->
+<table>
+<tr>
+<td width="50%" align="center">
 
-### 🎨 Theme Switcher
-Added a live **theme switcher** in the Hero section with multiple color presets — users can switch between visual themes on the fly.
+### 🌈 Previous (Colorful)
 
-<!-- INSERT: Screenshot of theme switcher options -->
+<img src="https://github.com/user-attachments/assets/39d3a3ff-ed8c-4555-a0a7-88fc7e1ba140" width="100%" />
 
-### 💻 Code Editor Panel
-Added an animated **mock code editor** on the right side of the Hero section (visible on desktop), showing a `lokesh.js` file with a fun developer profile object.
+</td>
+<td width="50%" align="center">
 
-<!-- INSERT: Screenshot of code editor panel -->
+### 🌑 Current (Dark)
 
-### 📐 Hero Layout Improvements
-- Left/right split layout on desktop (`md:w-1/2` each side)
-- Smooth **Framer Motion** entrance animations (fade + slide for left, scale for right)
-- `VariableProximity` name effect — font weight shifts based on cursor distance
-- Resume download button with animated ✅ confirmation state
-- Button visibility tied to scroll position (hides when hero leaves viewport)
+<img src="https://github.com/user-attachments/assets/90dfe461-41e6-4bfb-87a0-87c6a588dff4" width="100%" />
+
+</td>
+</tr>
+
+<tr>
+<td valign="top">
+
+- Bright gradient UI  
+- Playful & expressive  
+- Creative-focused design  
+- Early hero animations  
+
+</td>
+
+<td valign="top">
+
+- Sleek dark UI  
+- Strong typography  
+- Professional & modern  
+- Better spacing & UX  
+- Refined animations  
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🎬 Demo
+>  https://github.com/user-attachments/assets/71198e9b-53a4-40f2-b764-0042669e3446
 
-**Old Version**
-> https://github.com/user-attachments/assets/49373065-0957-4c00-9792-dc661405d4d0
-
-**New Version**
-<!-- INSERT: Upload new demo video to GitHub and paste the link here -->
-> https://github.com/user-attachments/assets/22f4eac1-573b-4e43-b2e2-ea2eb378a252
 
 ---
 
@@ -99,10 +112,10 @@ Portfolio/
 ├── src/
 │   ├── components/
 │   │   ├── reactbit/
-│   │   │   ├── TypingGreet.jsx      # Typing cursor animation
-│   │   │   ├── CodeEditor.jsx       # ✨ New — mock code editor
-│   │   │   ├── ThemeSwitcher.jsx    # ✨ New — theme switcher
-│   │   │   └── VariableProximity.jsx
+│   │   │   ├── ShapeGrid.jsx      # used for background
+│   │   │   ├── BorderGlow.jsx       # glow around boxes in BIO page
+│   │   │   ├── Folder.jsx    
+│   │   │   └── ScrollStack.jsx
 │   │   └── ...
 │   ├── sections/
 │   │   ├── Hero.jsx
