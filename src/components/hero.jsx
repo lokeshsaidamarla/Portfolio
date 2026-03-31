@@ -50,17 +50,15 @@ const Hero = () => {
       id="hero"
       style={{
         position: "relative",
-        width: "100vw",
+        width: "100%",         // ← was "100vw" (caused horizontal overflow)
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
-        // ↓ No backgroundColor here — lets the fixed ShapeGrid show through
-        marginLeft: "calc(-50vw + 50%)",
+        // ← removed marginLeft: "calc(-50vw + 50%)" (was pushing page wider)
         boxSizing: "border-box",
       }}
     >
-
 
       {/* BIG vertical DEV */}
       <div
@@ -80,7 +78,7 @@ const Hero = () => {
         <span
           style={{
             fontFamily: "'Space Grotesk', sans-serif",
-            fontSize: "clamp(260px, 32vw, 480px)",
+            fontSize: "clamp(320px, 32vw, 480px)",
             fontWeight: 800,
             color: "#1a1a1a",
             lineHeight: 1,
@@ -101,7 +99,7 @@ const Hero = () => {
         className="scroll-indicator"
         style={{
           position: "absolute",
-          bottom: "clamp(28px, 5vh, 52px)",
+          bottom: "clamp(65px, 5vh, 52px)",
           left: "50%",
           transform: "translateX(-50%)",
           zIndex: 10,
@@ -137,7 +135,7 @@ const Hero = () => {
         </div>
         <span
           style={{
-            fontSize: "11px",
+            fontSize: "9px",
             textTransform: "uppercase",
             letterSpacing: "0.18em",
             color: "rgba(255, 255, 255, 0.37)",
@@ -224,7 +222,7 @@ const Hero = () => {
             fontWeight: 800,
             lineHeight: 0.93,
             letterSpacing: "-0.04em",
-            fontSize: "clamp(64px, 13vw, 160px)",
+            fontSize: "clamp(70.5px, 13vw, 160px)",
           }}
         >
           <motion.span

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollFloat from './reactbit/ScrollFloat';
+import BorderGlow from "./reactbit/BorderGlow";
+
+// ── Same colors as Bio.jsx ────────────────────────────────────────────────────
+const BORDER_GLOW_COLORS = ["#c084fc", "#f472b6", "#38bdf8"];
+const BORDER_GLOW_COLOR  = "40 80 80";
 
 const certifications = [
   {
@@ -92,7 +97,7 @@ const CertificationCarousel = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="text-center text-base sm:text-lg md:text-xl font-medium text-white mb-5"
       >
-       Curious about a credential? Click any certificate to open its official verification page.
+        Curious about a credential? Click any certificate to open its official verification page.
       </motion.p>
 
       <div
@@ -103,18 +108,37 @@ const CertificationCarousel = () => {
         {allCerts.map((cert, index) => (
           <div
             key={index}
-            className="min-w-[140px] sm:min-w-[170px] md:min-w-[200px] lg:min-w-[230px] xl:min-w-[250px] flex-shrink-0 bg-[#00000022] rounded-2xl border border-white/20 p-3 transition-transform duration-300 hover:scale-105"
+            className="min-w-[140px] sm:min-w-[170px] md:min-w-[200px] lg:min-w-[230px] xl:min-w-[250px] flex-shrink-0"
           >
-            <a href={cert.link} target="_blank" rel="noopener noreferrer">
-              <img
-                src={cert.image}
-                alt={cert.title}
-                className="w-full h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] xl:h-[195px] object-contain mb-2 rounded-lg"
-              />
-              <p className="text-xs sm:text-sm md:text-base font-semibold text-center text-white leading-snug">
-                {cert.title}
-              </p>
-            </a>
+            <BorderGlow
+              edgeSensitivity={10}
+              glowColor={BORDER_GLOW_COLOR}
+              backgroundColor="#111111"
+              borderRadius={16}
+              glowRadius={70}
+              glowIntensity={1.2}
+              coneSpread={30}
+              animated={false}
+              colors={BORDER_GLOW_COLORS}
+              fillOpacity={0.35}
+              className="h-full w-full"
+            >
+              <a
+                href={cert.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-3"
+              >
+                <img
+                  src={cert.image}
+                  alt={cert.title}
+                  className="w-full h-[120px] sm:h-[140px] md:h-[160px] lg:h-[180px] xl:h-[195px] object-contain mb-2 rounded-lg"
+                />
+                <p className="text-xs sm:text-sm md:text-base font-semibold text-center text-white leading-snug">
+                  {cert.title}
+                </p>
+              </a>
+            </BorderGlow>
           </div>
         ))}
       </div>
